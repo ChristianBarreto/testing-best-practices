@@ -4,7 +4,7 @@ import ShoppingCart from '..';
 import { CartItems } from '@/app/types';
 import { CartProvider } from '@/app/context/cartContext';
 import { ReactElement, ReactNode } from 'react';
-import { renderWithProviders } from '@/app/__test__/testUtils';
+import { renderWithProviders } from '@/app/__test__/test-utils';
 
 const itemsMock: CartItems = [
   {id: '1', name: 'product 1', price: 3000},

@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import user from '@testing-library/user-event';
 import { screen, render } from '@testing-library/react';
 import Home from '../page';
-import { renderWithProviders } from './testUtils';
+import { renderWithProviders } from './test-utils';
 
 describe('Main page', () => {
   test("Main page title should exists", () => {

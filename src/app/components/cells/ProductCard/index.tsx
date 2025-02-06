@@ -4,12 +4,14 @@ import { useCart } from '../../../context/cartContext';
 
 export default function ProductCard({
   product,
-  cartItems,
-  setCartItems,
+  // cartItems,
+  // setCartItems,
+  handleClick,
 }: {
   product: Product,
-  cartItems: CartItems,
-  setCartItems: (a: CartItems) => void,
+  // cartItems?: CartItems,
+  // setCartItems?: (a: CartItems) => void,
+  handleClick?: () => void
 }) {
   const { cart, dispatch } = useCart();
   // const handleAddToCart = () => {
@@ -32,6 +34,7 @@ export default function ProductCard({
         <Button
           data-testid="add-to-cart-button"
           // onClick={handleAddToCart}
+          mr="2"
           onClick={() => dispatch(
             {
               type: 'add',
@@ -45,6 +48,14 @@ export default function ProductCard({
         >
           Add to cart
         </Button>
+
+        <Button
+          data-testid="check-button"
+          onClick={handleClick}
+        >
+          Check
+        </Button>
+
       </Card>
     </div>
   )

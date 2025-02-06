@@ -1,6 +1,7 @@
-import { Product } from '@/app/types';
 import '@testing-library/jest-dom';
 import { screen, render } from '@testing-library/react';
+import user from '@testing-library/user-event';
+import { Product } from '@/app/types';
 import ProductCard from '..';
 
 const product: Product = {
@@ -34,8 +35,18 @@ describe('Product card tests', () => {
   
   test('Product card should be display the Add to cart button', () => {
     render(<ProductCard product={product}/>);
-    const productButton = screen.getByRole('button');
+    const productButton = screen.getByRole('button', {name: "Add to cart"});
     expect(productButton).toHaveTextContent('Add to cart');
+  });
+
+  test('Product card should call handler function on button click', async () => {
+    user.setup();
+    const handleClickMock = jest.fn();
+    render(<ProductCard product={product} handleClick={handleClickMock} />);
+    const checkButton = screen.getByRole('button', {name: "Check"});
+    await user.click(checkButton);
+    expect(handleClickMock).toHaveBeenCalledTimes(1);
+    // This is an example of a Mocked function.
   });
 });
 
